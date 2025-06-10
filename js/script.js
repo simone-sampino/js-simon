@@ -15,6 +15,7 @@ Individuate gli elementi di cui avete bisogno per realizzare il programma.
 Immaginate la logica come fosse uno snack: "Dati 2 array di numeri, indica quali e quanti numeri ci sono in comune tra i due array" */
 
 // select dom elements
+const instructionsEl = document.getElementById("instructions");
 const listNumbersEl = document.getElementById("numbers-list");
 const formEl = document.getElementById("answers-form");
 const btnEl = document.querySelector(".btn");
@@ -26,3 +27,10 @@ for (let i = 0; i < 5; i++) {
   randomNumbers.push(Math.floor(Math.random() * 50));
 }
 listNumbersEl.innerText = randomNumbers.join(", ");
+
+// add 30sec timer to hide numbers
+const timer = setTimeout(() => {
+  listNumbersEl.innerHTML = "";
+  instructionsEl.innerText = "Tempo scaduto! Inserisci i numeri visualizzati.";
+  formEl.classList.remove("d-none");
+}, 3000);
