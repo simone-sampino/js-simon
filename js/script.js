@@ -18,13 +18,15 @@ Immaginate la logica come fosse uno snack: "Dati 2 array di numeri, indica quali
 const instructionsEl = document.getElementById("instructions");
 const listNumbersEl = document.getElementById("numbers-list");
 const formEl = document.getElementById("answers-form");
+const inputEl = document.querySelector("input");
 const btnEl = document.querySelector(".btn");
+const messageEl = document.getElementById("message");
 
 // print random numbers
 const randomNumbers = [];
 
 for (let i = 0; i < 5; i++) {
-  randomNumbers.push(Math.floor(Math.random() * 50));
+  randomNumbers.push(Math.floor(Math.random() * 50) + 1);
 }
 listNumbersEl.innerText = randomNumbers.join(", ");
 
@@ -33,4 +35,4 @@ const timer = setTimeout(() => {
   listNumbersEl.innerHTML = "";
   instructionsEl.innerText = "Tempo scaduto! Inserisci i numeri visualizzati.";
   formEl.classList.remove("d-none");
-}, 3000);
+}, 30000);
