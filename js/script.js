@@ -48,3 +48,20 @@ const timer = setInterval(() => {
     formEl.classList.remove("d-none");
   }
 }, 1000);
+
+// verify how many numbers were guessed
+formEl.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const guess = [];
+
+  for (let i = 0; i < inputEl.length; i++) {
+    const answer = Number(inputEl[i].value);
+
+    if (randomNumbers.includes(answer)) {
+      guess.push(answer);
+    }
+  }
+
+  messageEl.innerText = `Hai indovinato ${guess.length} numeri! Sono: ${guess}`;
+});
