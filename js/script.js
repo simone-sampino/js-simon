@@ -15,10 +15,11 @@ Individuate gli elementi di cui avete bisogno per realizzare il programma.
 Immaginate la logica come fosse uno snack: "Dati 2 array di numeri, indica quali e quanti numeri ci sono in comune tra i due array" */
 
 // select dom elements
+const countdownEl = document.getElementById("countdown");
 const instructionsEl = document.getElementById("instructions");
 const listNumbersEl = document.getElementById("numbers-list");
 const formEl = document.getElementById("answers-form");
-const inputEl = document.querySelector("input");
+const inputEl = document.querySelectorAll("input");
 const btnEl = document.querySelector(".btn");
 const messageEl = document.getElementById("message");
 
@@ -31,8 +32,19 @@ for (let i = 0; i < 5; i++) {
 listNumbersEl.innerText = randomNumbers.join(", ");
 
 // add 30sec timer to hide numbers
-const timer = setTimeout(() => {
-  listNumbersEl.innerHTML = "";
-  instructionsEl.innerText = "Tempo scaduto! Inserisci i numeri visualizzati.";
-  formEl.classList.remove("d-none");
-}, 30000);
+let seconds = 5;
+const limit = 0;
+
+const timer = setInterval(() => {
+  countdownEl.innerText = seconds;
+
+  seconds--;
+
+  if (seconds < limit) {
+    clearInterval(timer);
+    listNumbersEl.innerText = "";
+    instructionsEl.innerText =
+      "Tempo scaduto! Inserisci i numeri visualizzati.";
+    formEl.classList.remove("d-none");
+  }
+}, 1000);
